@@ -11,6 +11,10 @@ function App() {
       .then((data) => setData(data));
   }, []);
 
+  useEffect(() => {
+    // Этот эффект сработает при изменении строки поиска
+  }, [searchQuery]);
+
   const filteredData = data.filter(item =>
     item.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
