@@ -1,3 +1,4 @@
+// src/App.jsx
 import React, { useState, useEffect } from 'react';
 
 function App() {
@@ -13,6 +14,12 @@ function App() {
   return (
     <div>
       <h1>Фильтрация данных</h1>
+      <input
+        type="text"
+        placeholder="Поиск..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
     </div>
   );
 }
