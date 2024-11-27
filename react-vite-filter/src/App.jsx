@@ -1,5 +1,6 @@
 // src/App.jsx
 import React, { useState, useEffect } from 'react';
+import './App.css';
 
 function App() {
   const [data, setData] = useState([]);
@@ -11,26 +12,23 @@ function App() {
       .then((data) => setData(data));
   }, []);
 
-  useEffect(() => {
-    // Этот эффект сработает при изменении строки поиска
-  }, [searchQuery]);
-
   const filteredData = data.filter(item =>
     item.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
-    <div>
-      <h1>Фильтрация данных</h1>
+    <div className="app-container">
+      <h1 className="title">Фильтрация данных</h1>
       <input
         type="text"
+        className="search-input"
         placeholder="Поиск..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-      <ul>
+      <ul className="data-list">
         {filteredData.map(item => (
-          <li key={item.id}>{item.name}</li>
+          <li key={item.id} className="data-item">{item.name}</li>
         ))}
       </ul>
     </div>
