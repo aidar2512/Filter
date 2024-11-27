@@ -11,6 +11,10 @@ function App() {
       .then((data) => setData(data));
   }, []);
 
+  const filteredData = data.filter(item =>
+    item.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div>
       <h1>Фильтрация данных</h1>
@@ -20,6 +24,11 @@ function App() {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
+      <ul>
+        {filteredData.map(item => (
+          <li key={item.id}>{item.name}</li>
+        ))}
+      </ul>
     </div>
   );
 }
